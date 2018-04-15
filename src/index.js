@@ -1,4 +1,4 @@
-const db = require('./db');
+const db = require('..util/db/DbFactory')(process.env);
 
 const BlogDataSource = require('./data/server/Blog');
 const blogDataSource = new BlogDataSource(db);

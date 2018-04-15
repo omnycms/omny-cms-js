@@ -1,6 +1,7 @@
 class RequestResponseHandler {
-    constructor(routes) {
+    constructor(routes, pageHandler) {
         this.routes = routes;
+        this.pageHandler = pageHandler;
     }
 
     processRequest(request) {
@@ -11,9 +12,11 @@ class RequestResponseHandler {
             const requestMethod = request.method;
             const method = page[requestMethod];
             if(!method) {
-                response.status = 405;
-                response.body = "Method not allowed";
-            response.contentType = "text/plain";
+                if(!this.handleResponseWithPageOrStaticContent(request, response)) {
+                    response.status = 405;
+                    response.body = "Method not allowed";
+                    response.contentType = "text/plain";
+                }
             } else {
                 request.pathComponents = this.routes.getPathComponents(page, url);
 
@@ -28,7 +31,16 @@ class RequestResponseHandler {
 
         return response;
     }
-    
+
+    handleResponseWithPageOrStaticContent(request, response) {
+        if(this.pageHandler) {
+            const page = this.pageHandler.getPage(request.hostname, request.url);
+            if(page) {
+                
+            }
+        }
+        return false;
+    }
 }
 
 module.exports = RequestResponseHandler;

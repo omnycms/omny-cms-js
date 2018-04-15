@@ -1,12 +1,12 @@
-const RoutingTree = require('../src/apis/util/RoutingTree');
+const RoutingTree = require("../src/apis/util/RoutingTree");
 
-const assert = require('assert');
+const assert = require("assert");
 
-describe('Routes', function() {
-    describe('wildcards()', function() {
+describe("Routes", function() {
+    describe("wildcards()", function() {
         const blogPostPattern = "/blogs/{id}/posts/{postId}";
         const blogPattern = "/blogs/*"
-        it('should return the specific match when the right format is given', function() {
+        it("should return the specific match when the right format is given", function() {
             const url = "/blogs/a/posts/b";
             const routingTree = new RoutingTree("");
             const expected = "hello";
@@ -18,7 +18,7 @@ describe('Routes', function() {
             assert.equal(result, expected);
          });
 
-         it('should return the gemeral match when the right format is given', function() {
+         it("should return the gemeral match when the right format is given", function() {
             const url = "/blogs/a/b/c";
             const routingTree = new RoutingTree("");
             const blogPost = "hello";

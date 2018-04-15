@@ -1,7 +1,8 @@
 const RoutingTree = require('./util/RoutingTree');
 
 const apis = [
-    new (require('./impl/Blog'))()
+    new (require('./impl/Blog'))(),
+    new (require('./impl/Health'))()
 ]
 
 const rootPattern = "/api/v1.0";

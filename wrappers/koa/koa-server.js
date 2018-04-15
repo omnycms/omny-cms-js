@@ -1,9 +1,9 @@
 const Koa = require('koa');
 
-const RequestResponseHandler = require('./apis/handlers/RequestResponseHandler');
-const KoaHandler = require('./apis/handlers/KoaHandler');
+const RequestResponseHandler = require('../../src/apis/handlers/RequestResponseHandler');
+const KoaHandler = require('./KoaHandler');
 
-const apiRoutes = require('./apis/');
+const apiRoutes = require('../../src/apis/');
 
 const app = new Koa();
 
